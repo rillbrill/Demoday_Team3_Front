@@ -150,10 +150,21 @@ const Group = ({ groups = [] }) => {
               className="group-item"
               onClick={() => handleGroupClick(group)}
             >
-              {group.imageUrl !== "string" ? (
+              {/* {group.imageUrl !== "string" ? (
                 <img
                   src={group.imageUrl}
                   alt={group.name}
+                />
+              ) : (
+                <img
+                  src={defaultImage} // 기본 이미지
+                  alt="기본 그룹 이미지"
+                />
+              )} */}
+              {group.imageUrl !== "string"? (
+                <img
+                  src={group.imageUrl}
+                  alt={group.imageUrl}
                 />
               ) : (
                 <img

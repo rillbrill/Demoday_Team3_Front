@@ -44,6 +44,17 @@ const GroupDetail = ({ groups, posts }) => {
     );
   };
 
+  const dayDiffCal = (createdAt) => {
+    const now = new Date();
+    const createdDate = new Date(createdAt);
+    const timeDiff = now - createdDate;
+    console.log(now,'pp', createdDate, 'dd', groups.createdAt);
+    const dayDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+    return dayDiff
+  }
+    
+
   // 공감 버튼 클릭 시 호출되는 함수
   const handleLike = () => {
     setLikeCount(likeCount + 1);
@@ -115,7 +126,7 @@ const GroupDetail = ({ groups, posts }) => {
         {group.imageUrl !== "string" ? (
           <img
             src={group.imageUrl}
-            alt={group.name}
+            alt={group.imageUrl}
             className="group-image"
           />
         ) : (
@@ -128,7 +139,7 @@ const GroupDetail = ({ groups, posts }) => {
         <div className="group-info">
           <div className="group-meta-actions">
             <div className="group-meta">
-              <span>D+{group.dDay}</span>
+              <span>D+{dayDiffCal(group.createdAt)}</span>
               <span> | </span>
               <span>{group.isPublic ? "공개" : "비공개"}</span>
             </div>
